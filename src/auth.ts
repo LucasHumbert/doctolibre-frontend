@@ -5,11 +5,15 @@ declare module "next-auth" {
     interface User {
         firstName: string
         lastName: string
+        token: {
+            token: string
+        }
     }
 
     interface Session {
         user: User & DefaultSession["user"]
         expires: string
+        access_token: string
         error: string
     }
 }
@@ -51,12 +55,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 token.email = user.email
                 token.firstName = user.firstName
                 token.lastName = user.lastName
+                token.token = user.token.token
             }
             return token
         },
         async session({ session, token }) {
             return {
                 ...session,
+                access_token: token.token,
                 user: {
                     ...session.user,
                     id: token.id as string,

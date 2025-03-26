@@ -1,13 +1,28 @@
 "use server"
 
-import {signIn, signOut} from "@/auth";
+import {auth, signIn, signOut} from "@/auth";
 
 export const login = async () => {
     await signIn('credentials', { redirectTo: '/'})
 }
 
 export const logout = async () => {
-    // TODO call backend logout
+    const session = await auth()
 
-    await signOut({ redirectTo: '/'})
+    const res = await fetch(`${process.env.BACKEND_URL}/user/logout`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${session?.access_token}`
+        }
+    })
+
+    const result = await res.json()
+
+    console.log(result)
+    if (result?.success) {
+        await signOut({ redirectTo: '/'})
+    } else {
+        // TODO throw error
+        console.log('error')
+    }
 }
