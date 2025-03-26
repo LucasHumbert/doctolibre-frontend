@@ -19,7 +19,6 @@ export default async function Middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/', request.url))
     }
 
-    console.log(pathname)
     const isNotLoggedRoute = notLoggedRoutes.some((route) =>
         pathname.startsWith(route)
     )

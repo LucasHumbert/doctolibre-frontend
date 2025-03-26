@@ -7,5 +7,7 @@ export const login = async () => {
 }
 
 export const logout = async () => {
+    // TODO call backend logout
+
     await signOut({ redirectTo: '/'})
 }
