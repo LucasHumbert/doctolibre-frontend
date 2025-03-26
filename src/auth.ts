@@ -26,9 +26,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                     throw new Error("Invalid credentials.")
                 }
 
-                console.log(user)
                 return user
             },
         }),
     ],
+    callbacks: {
+        async jwt({token, user}) {
+            return { ...token, ...user }
+        },
+
+        async session({session, token}) {
+            session.user = token
+
+            return session
+        }
+    }
 })

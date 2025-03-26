@@ -9,6 +9,7 @@ export default async function Home() {
     return <div>
       <p>You are signed in as {session.user?.email}</p>
       <SignOutBtn />
+      <Link href={'/profile'}>Profile</Link>
     </div>
   }
 
