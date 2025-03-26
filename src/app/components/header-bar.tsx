@@ -10,7 +10,7 @@ export default async function HeaderBar() {
 
         { session?.user ? (
             <div>
-                <Link href='/profile'>{ session.user.firstName }</Link>
+                <Link href='/profile'>{ session.user.firstName } {session.user.lastName}</Link>
                 <SignOutBtn>Sign out</SignOutBtn>
             </div>
         ) : (

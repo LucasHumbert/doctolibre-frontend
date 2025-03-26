@@ -1,6 +1,4 @@
-import Link from "next/link";
 import {auth} from "@/auth";
-import SignOutBtn from "@/app/components/sign-out-btn";
 
 export default async function Home() {
   const session = await auth()
