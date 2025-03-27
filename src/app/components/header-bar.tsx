@@ -6,7 +6,7 @@ export default async function HeaderBar() {
     const session = await auth()
 
     return <div className="w-full py-4 px-2 mb-2 bg-blue-300 flex justify-between items-center">
-        <Link href='/'>Doctolibre</Link>
+        <Link href='/' className='text-3xl text-white'>Doctolibre</Link>
 
         { session?.user ? (
             <div>
@@ -17,7 +17,7 @@ export default async function HeaderBar() {
             <div>
                 <Link href='/login'>
                     <button
-                        className="text-white bg-indigo-500 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5"
+                        className="cursor-pointer text-white bg-indigo-500 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5"
                     >
                         Login
                     </button>
