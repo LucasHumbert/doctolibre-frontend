@@ -1,10 +1,15 @@
-import {auth} from "@/auth";
+import Link from "next/link";
 
 export default async function Home() {
-  const session = await auth()
-
-
   return <div>
-    <h1>Hello { session?.user?.firstName } !</h1>
+    <div className='flex flex-row justify-between'>
+      <h1>Calendar</h1>
+
+      <div>
+        <Link href={'/login'}>Login</Link>
+        <Link href={'/register'}>Register</Link>
+      </div>
+    </div>
+
   </div>
 }

@@ -2,10 +2,10 @@ import Link from "next/link";
 import {auth} from "@/auth";
 import SignOutBtn from "@/app/components/sign-out-btn";
 
-export default async function HeaderBar() {
+export default async function NavBar() {
     const session = await auth()
 
-    return <div className="w-full py-4 px-2 mb-2 bg-blue-300 flex justify-between items-center">
+    return <nav className="h-screen w-64 bg-blue-300">
         <Link href='/' className='text-3xl text-white'>Calendar</Link>
 
         { session?.user ? (
@@ -24,5 +24,5 @@ export default async function HeaderBar() {
                 </Link>
             </div>
         )}
-    </div>
+    </nav>
 }

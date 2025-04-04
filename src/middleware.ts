@@ -2,9 +2,9 @@ import {NextResponse} from "next/server";
 import type {NextRequest} from "next/server";
 import {auth} from "@/auth"
 
-const loggedRoutes = ["/profile"]
+const onlyLoggedRoutes = ["/profile", "/home"]
 
-const notLoggedRoutes = ["/login"]
+const onlyNotLoggedRoutes = ["/login", "/register"]
 export const config = {
     matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 }
@@ -12,18 +12,21 @@ export default async function Middleware(request: NextRequest) {
     const session = await auth()
     const {pathname} = request.nextUrl
 
-    const isLoggedRoute = loggedRoutes.some((route) =>
+    const isLoggedRoute = onlyLoggedRoutes.some((route) =>
         pathname.startsWith(route)
     )
     if (isLoggedRoute && !session) {
-        return NextResponse.redirect(new URL('/', request.url))
+        return NextResponse.redirect(new URL('/login', request.url))
     }
 
-    const isNotLoggedRoute = notLoggedRoutes.some((route) =>
+    let isNotLoggedRoute = onlyNotLoggedRoutes.some((route) =>
         pathname.startsWith(route)
     )
+
+    isNotLoggedRoute = pathname === '/' ? true : isNotLoggedRoute
+
     if (isNotLoggedRoute && session) {
-        return NextResponse.redirect(new URL('/', request.url))
+        return NextResponse.redirect(new URL('/home', request.url))
     }
 
     return NextResponse.next()
