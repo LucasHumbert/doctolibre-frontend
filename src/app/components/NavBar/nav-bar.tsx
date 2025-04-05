@@ -7,13 +7,18 @@ export default async function NavBar() {
     const session = await auth()
 
     return <>
-        <div className="w-full h-16 px-3 flex flex-row justify-between items-center">
-            <Link href={session?.user ? '/home' : '/'} className='text-3xl text-blue-500'>Calendar</Link>
+        <div className="w-full sm:h-16 px-3 flex flex-col sm:flex-row justify-between items-center">
+            <Link
+                href={session?.user ? '/home' : '/'}
+                className='text-3xl text-blue-500 my-3 sm:my-0'
+            >
+                Calendar
+            </Link>
 
             { session?.user ? (
                 <LoggedBar />
             ) : (
-                <div>
+                <div className='mb-3 sm:mb-0'>
                     <Link href='/register' className='mr-2'>
                         <BlueButton text='Register' />
                     </Link>

@@ -8,7 +8,7 @@ export default function LoginPage() {
             "use server"
             await login(formData)
         }}
-        className='flex flex-col items-center w-1/3 mt-12 m-auto p-5 bg-white border border-gray-200 rounded-lg shadow-sm'
+        className='flex flex-col items-center w-[95%] sm:w-[500px] mt-12 m-auto p-5 bg-white border border-gray-200 rounded-lg shadow-sm'
     >
         <AuthInput name='email' label='Email' type='email' required />
 
