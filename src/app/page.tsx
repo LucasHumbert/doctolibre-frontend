@@ -1,15 +1,13 @@
-import Link from "next/link";
-
 export default async function Home() {
   return <div>
-    <div className='flex flex-row justify-between'>
-      <h1>Calendar</h1>
+      <h1>My calendar</h1>
 
       <div>
-        <Link href={'/login'}>Login</Link>
-        <Link href={'/register'}>Register</Link>
+        Order your day
       </div>
-    </div>
 
+      <div>
+        Plan your next activities
+      </div>
   </div>
 }
