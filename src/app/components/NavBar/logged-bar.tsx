@@ -5,7 +5,7 @@ import LoggedBarMenuItem from "@/app/components/NavBar/logged-bar-menu-item";
 export default function LoggedBar() {
     return <>
         <div className='mb-3 sm:mb-0'>
-            <LoggedBarMenuItem text='Home' link='/home' />
+            <LoggedBarMenuItem text='Calendar' link='/calendar' />
             <LoggedBarMenuItem text='Profile' link='/profile' />
         </div>
         <div className='mb-2 sm:mb-0'>

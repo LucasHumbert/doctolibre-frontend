@@ -2,7 +2,7 @@ import {NextResponse} from "next/server";
 import type {NextRequest} from "next/server";
 import {auth} from "@/auth"
 
-const onlyLoggedRoutes = ["/profile", "/home"]
+const onlyLoggedRoutes = ["/profile", "/calendar"]
 
 const onlyNotLoggedRoutes = ["/login", "/register"]
 export const config = {
@@ -26,7 +26,7 @@ export default async function Middleware(request: NextRequest) {
     isNotLoggedRoute = pathname === '/' ? true : isNotLoggedRoute
 
     if (isNotLoggedRoute && session) {
-        return NextResponse.redirect(new URL('/home', request.url))
+        return NextResponse.redirect(new URL('/calendar', request.url))
     }
 
     return NextResponse.next()

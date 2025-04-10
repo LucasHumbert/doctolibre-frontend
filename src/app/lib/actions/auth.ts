@@ -5,7 +5,7 @@ import {redirect} from "next/navigation";
 import {FormState, RegisterFormSchema} from "@/app/lib/validators/auth";
 
 export const login = async (formData: FormData) => {
-    formData.append('redirectTo', '/home');
+    formData.append('redirectTo', '/calendar');
     await signIn('credentials', formData)
 }
 

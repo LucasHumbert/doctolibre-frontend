@@ -9,7 +9,7 @@ export default async function NavBar() {
     return <>
         <div className="w-full sm:h-16 px-3 flex flex-col sm:flex-row justify-between items-center">
             <Link
-                href={session?.user ? '/home' : '/'}
+                href={session?.user ? '/calendar' : '/'}
                 className='text-3xl text-blue-500 my-3 sm:my-0'
             >
                 Calendar

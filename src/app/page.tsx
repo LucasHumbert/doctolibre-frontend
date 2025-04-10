@@ -1,4 +1,4 @@
-export default async function Home() {
+export default function HomePage() {
   return <div>
       <h1>My calendar</h1>
 
