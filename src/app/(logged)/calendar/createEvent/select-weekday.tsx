@@ -1,6 +1,4 @@
-import {useState} from "react";
-
-export default function SelectWeekday() {
+export default function SelectWeekday({ selectedDays, setSelectedDays } : { selectedDays: number[], setSelectedDays: (value: number[]) => void }) {
     type Day = {
         code: number,
         value: string,
@@ -17,13 +15,11 @@ export default function SelectWeekday() {
         { code: 7, value: 'Sunday', text: 'Sun.' },
     ]
 
-    const [selectedDays, setSelectDays] = useState<number[]>([])
-
     function handleSelect(selectedDayCode: number) {
         if (selectedDays.includes(selectedDayCode)) {
-            setSelectDays(selectedDays.filter((code) => code !== selectedDayCode))
+            setSelectedDays(selectedDays.filter((code) => code !== selectedDayCode))
         } else {
-            setSelectDays([...selectedDays, selectedDayCode])
+            setSelectedDays([...selectedDays, selectedDayCode])
         }
     }
 
