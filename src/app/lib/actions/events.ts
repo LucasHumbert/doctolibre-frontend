@@ -14,7 +14,18 @@ export const createRepetitiveEvent = async (weekDays: number[], startTime: strin
     "userId": session?.user.id
   }
 
-  console.log(event)
+  const res = await fetch(`${process.env.BACKEND_URL}/event/create`, {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session?.access_token}`
+    },
+    body: JSON.stringify(event)
+  })
 
-  return true
+  const result = await res.json()
+
+  if (result?.success) {
+    return { success: true }
+  }
 }

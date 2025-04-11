@@ -22,7 +22,19 @@ export default function CreateEvent() {
         description: ''
     })
 
+    const resetValues = () => {
+        setSelectedDays([])
+        setStartTime('')
+        setEndTime('')
+        setTitle('')
+        setDescription('')
+    }
+
     const handleModal = () => {
+        if (openModal) {
+            resetValues()
+        }
+
         setModal(!openModal)
     }
 
@@ -64,7 +76,9 @@ export default function CreateEvent() {
 
         createRepetitiveEvent(selectedDays, startTime, endTime, title, description.length ? description : null)
             .then(r => {
-                console.log(r)
+                if (r?.success) {
+                    handleModal()
+                }
             })
     }
 
