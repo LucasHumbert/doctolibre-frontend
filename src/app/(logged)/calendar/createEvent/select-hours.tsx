@@ -1,5 +1,5 @@
 export default function SelectHours({ startTime, setStartTime, endTime, setEndTime }: { startTime: string, setStartTime: (value: string) => void, endTime: string, setEndTime: (value: string) => void }) {
-    return <div className='w-full mb-5 mt-4 flex justify-between items-center'>
+    return <div className='flex justify-between items-center'>
         <div className='w-full mr-1'>
             <label htmlFor="start_time"
                    className="block mb-2 text-sm font-medium text-gray-900"

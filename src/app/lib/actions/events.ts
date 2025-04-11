@@ -1,8 +1,20 @@
 "use server"
 
-export const createRepetitiveEvent = async (weekDay: number[], startTime: string, endTime: string, title: string, description: string) => {
+import {auth} from "@/auth";
 
-  // TODO request
+export const createRepetitiveEvent = async (weekDays: number[], startTime: string, endTime: string, title: string, description: string|null) => {
+  const session = await auth()
+
+  const event = {
+    "weekDays": { "days": weekDays },
+    "title": title,
+    "description": description,
+    "startHour": startTime,
+    "endHour": endTime,
+    "userId": session?.user.id
+  }
+
+  console.log(event)
 
   return true
 }
